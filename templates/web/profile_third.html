@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile details</title>
+    <style>
+        form {
+
+            display: inline-block;
+            margin-top: 13%;
+            margin-left: 33%;
+            padding-top: 30px;
+            padding: 75px;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            margin: 15px;
+            padding: 13px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 17px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Log In</h1>
+    {% if messages %}
+    <!-- <ul class="messages"> -->
+    <div class="alert alert-success success_msg" id="success_alert">
+      {% for message in messages %}
+
+
+      {{ message }}
+
+      {% endfor %}
+    </div>
+    <!-- </ul> -->
+    {% endif %}
+    <form method="post" novalidate="" id="profile-form" class="profile-form">
+        {% csrf_token %}
+
+
+        <label for="">Profile Picture : </label>
+        <input type="file" src="" name="profile_picture", id="profile_picture" alt="User Profile Picture"> <br>
+        <label for="">Short Intro : </label>
+        <input type="text" name="short_intro" id="short_intro" placeholder="shot intro"> <br>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</body>
+
+</html>

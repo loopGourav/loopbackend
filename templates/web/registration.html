@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        #regs {
+
+            display: inline-block;
+            justify-content: center;
+            margin-top: 10%;
+            margin-left: 58%;
+            padding-top: 30px;
+            padding: 75px;
+
+
+        }
+
+        .btn {
+            margin: 15px;
+            padding: 13px;
+            border-radius: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input {
+            padding: 17px;
+            border-radius: 12px;
+        }
+    </style>
+
+<body>
+    <div id="regs">
+        <H2>Registration With Login!</H2>
+        {% if messages %}
+        <!-- <ul class="messages"> -->
+        <div class="alert alert-success success_msg" id="success_alert">
+          {% for message in messages %}
+
+
+          {{ message }}
+
+          {% endfor %}
+        </div>
+        <!-- </ul> -->
+        {% endif %}
+        <form method="post" novalidate="" id="sign-up-form" class="sign-up-form">
+            {% csrf_token %}
+        <label for="">Google Login</label>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="689159977847-q65lnun0ri83d8aacjj3ghpjepq8nav3.apps.googleusercontent.com">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div><br>
+        <label for="">E-mail/Mobile Number : </label>
+        <input type="text email" name="username" id="username" placeholder="E-mail/Mobile Number"><br>
+        <button type="submit" class="btn"> Login </button>
+        <!-- <a href="/user/login">Log-in if already registerd.</a> -->
+        <p style="color: green;"> Don't worry if you dont have we will create one for you</p>
+        </form>
+        <script type="text/javascript">
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
+        </script>
+<!--         <a href="#" onclick="signOut();">Sign out</a>
+        <script>
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              console.log('User signed out.');
+            });
+          }
+        </script> -->
+    </div>
+</body>
+
+</html>

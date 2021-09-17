@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile details</title>
+    <style>
+        form {
+
+            display: inline-block;
+            margin-top: 13%;
+            margin-left: 33%;
+            padding-top: 30px;
+            padding: 75px;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            margin: 15px;
+            padding: 13px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 17px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Log In</h1>
+    {% if messages %}
+    <!-- <ul class="messages"> -->
+    <div class="alert alert-success success_msg" id="success_alert">
+      {% for message in messages %}
+
+
+      {{ message }}
+
+      {% endfor %}
+    </div>
+    <!-- </ul> -->
+    {% endif %}
+    <form method="post" novalidate="" id="profile-form" class="profile-form">
+        {% csrf_token %}
+
+
+        <label for="">Talent : </label>
+        <input type="text" name="talent" id="talent" placeholder="Your talent"> <br>
+        <label for="">Interest : </label>
+        <input type="text" name="interest" id="interest" placeholder="interest"> <br>
+        <label for="">Price : </label>
+        <input type="text" name="price" id="price" placeholder="price"> <br>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</body>
+
+</html>
